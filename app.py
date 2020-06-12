@@ -94,7 +94,7 @@ def complete_tasks(full_seq,des,unique_key):
 
     elif st.checkbox("Plot Amino Acid Frequency",key=unique_key):
         aa_freq = OrderedDict(Counter(str(p1)))
-        bar_colour = st.beta_color_picker("Pick Colour for all Bars")
+        bar_colour = st.beta_color_picker("Pick Colour for all Bars",key=unique_key)
         plt.bar(aa_freq.keys(), aa_freq.values(), color=bar_colour)
         st.pyplot()
         st.write("Asterisk (*) - Denotes Stop Codons.")
