@@ -11,7 +11,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 
-import webbrowser
 
 #Show description and sequence of selected DNA in dot plot section
 def show_des_and_seq_for_dot_plot(id1_des,id2_des,id1_seq,id2_seq,unique_key):
@@ -126,10 +125,6 @@ def main():
     """Simple Bioinformatics App. """
 
     st.title("DNA Bioinformatics App")
-
-    #Go to blog with my info
-    if st.sidebar.button("My Summer Blog"):
-        webbrowser.open_new_tab("https://jawahart.github.io/")
 
     #To select different pages on the webpage
     menu = ["DNA Analysis", "Dot Plot"]
