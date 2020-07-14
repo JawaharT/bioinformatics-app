@@ -151,7 +151,7 @@ def main():
         st.write("Specficially this is a simple webpage to showcase the power of bioinformatics by\
                  displaying basic DNA Analysis that can be done using Python.")
         
-        st.write("In order to use this functionality, download or enter two NCBI IDs from the Nucleotide database\
+        st.write("In order to use this functionality, download a FASTA file or enter a NCBI ID from the Nucleotide database\
                 on the NCBI website.")
         
         st.subheader("DNA Sequence Analysis")
@@ -178,7 +178,7 @@ def main():
 
     #Go to Dot Plot page
     elif choices == "Dot Plot":
-        st.write("In order to use this functionality, download or enter a NCBI ID from the Nucleotide database\
+        st.write("In order to use this functionality, download or enter two FASTA files/NCBI IDs from the Nucleotide database\
                 on the NCBI website.")
         
         st.subheader("Dot Plot Generator between 2 Sequences")
