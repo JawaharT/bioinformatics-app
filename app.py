@@ -151,6 +151,9 @@ def main():
         st.write("Specficially this is a simple webpage to showcase the power of bioinformatics by\
                  displaying basic DNA Analysis that can be done using Python.")
         
+        st.write("In order to use this functionality, download or enter two NCBI IDs from the Nucleotide database\
+                on the NCBI website.")
+        
         st.subheader("DNA Sequence Analysis")
 
         #Check for offline upload of files
@@ -175,6 +178,9 @@ def main():
 
     #Go to Dot Plot page
     elif choices == "Dot Plot":
+        st.write("In order to use this functionality, download or enter a NCBI ID from the Nucleotide database\
+                on the NCBI website.")
+        
         st.subheader("Dot Plot Generator between 2 Sequences")
 
         #Check for offline upload of files
@@ -222,7 +228,7 @@ def main():
 
     #Check for Covid-19 section and show data for each of the countries
     elif choices == "Covid-19 Pandemic":
-        st.subheader("Latest Covid-19 Numbers from John Hopkins University")
+        st.subheader("Latest Covid-19 Numbers from John Hopkins University API")
         covid = Covid()
         covid.get_data()
         df = pd.DataFrame([get_info("active",covid),get_info("deaths",covid),get_info("recovered",covid),get_info("confirmed",covid)],
