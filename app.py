@@ -11,6 +11,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 
+from covid import Covid
+import pandas as pd
+
 
 #Show description and sequence of selected DNA in dot plot section
 def show_des_and_seq_for_dot_plot(id1_des,id2_des,id1_seq,id2_seq,unique_key):
@@ -120,6 +123,11 @@ def dotplotx(seq1,seq2):
     plt.show()
 
 
+#Retrirve info of each country from John Hopkins University database
+def get_info(parameter,covid):
+    return [covid.get_status_by_country_name(country)[parameter] for country in ("India", "United Kingdom", "US")]
+
+
 #Main function where the website is controlled
 def main():
     """Simple Bioinformatics App. """
@@ -127,7 +135,7 @@ def main():
     st.title("DNA Bioinformatics App")
 
     #To select different pages on the webpage
-    menu = ["DNA Analysis", "Dot Plot"]
+    menu = ["DNA Analysis", "Dot Plot", "Covid-19 Pandemic"]
     choices = st.sidebar.selectbox("Select Activity", menu)
 
     #Go to DNA Analysis page
@@ -211,6 +219,17 @@ def main():
                 st.subheader("Dotplot for first {} Nucleotides".format(user_limit))
                 dotplotx(id1_seq[0:user_limit],id2_seq[0:user_limit])
                 st.pyplot()
+
+    #Check for Covid-19 section and show data for each of the countries
+    elif choices == "Covid-19 Pandemic":
+        st.subheader("Latest Covid-19 Numbers from John Hopkins University")
+        covid = Covid()
+        covid.get_data()
+        df = pd.DataFrame([get_info("active",covid),get_info("deaths",covid),get_info("recovered",covid),get_info("confirmed",covid)],
+                  columns=["India", "UK", "US"], index=["Active", "Deaths", "Recovered", "Confirmed"])
+        
+        st.dataframe(df)
+        
             
 #Start program when streamlit is run
 if __name__ == '__main__':
