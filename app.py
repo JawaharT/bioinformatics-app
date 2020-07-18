@@ -228,13 +228,19 @@ def main():
 
     #Check for Covid-19 section and show data for each of the countries
     elif choices == "Covid-19 Pandemic":
-        st.subheader("Latest Covid-19 Numbers from John Hopkins University API")
+        st.subheader("Latest Covid-19 Cases (millions) from John Hopkins University API")
         covid = Covid()
         covid.get_data()
         df = pd.DataFrame([get_info("active",covid),get_info("deaths",covid),get_info("recovered",covid),get_info("confirmed",covid)],
                   columns=["India", "UK", "US"], index=["Active", "Deaths", "Recovered", "Confirmed"])
         
         st.dataframe(df)
+
+        df.plot.bar(rot=0, title="Cases (millions)")
+        st.pyplot()
+        
+        df.transpose().plot.bar(rot=0, title="Cases (millions)")
+        st.pyplot()
         
             
 #Start program when streamlit is run
